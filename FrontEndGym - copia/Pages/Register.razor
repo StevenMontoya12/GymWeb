@@ -1,0 +1,97 @@
+@page "/registrar"
+@using BlazorFrontend.Models
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@code {
+    private RegistrationModel registrationModel = new RegistrationModel();
+    private string? errorMessage;
+
+    private async Task HandleRegistration()
+    {
+        try
+        {
+            var response = await Http.PostAsJsonAsync("api/cliente/registrar", registrationModel);
+            if (response.IsSuccessStatusCode)
+            {
+                Navigation.NavigateTo("/login");
+            }
+            else
+            {
+                errorMessage = "Error al registrar. Inténtalo de nuevo.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error: {ex.Message}";
+        }
+    }
+
+    private void NavigateToLogin()
+    {
+        Navigation.NavigateTo("/login");
+    }
+}
+
+<div class="register-container d-flex justify-content-center align-items-center">
+    <div class="register-card shadow-lg p-4">
+        <h2 class="text-center mb-4">Crear una cuenta</h2>
+        <p class="text-muted text-center mb-4">Completa el formulario para crear una cuenta</p>
+
+        <div class="row">
+            <div class="col-md-6 form-group mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input @bind="registrationModel.Nombre" class="form-control form-control-lg" placeholder="Ingresa tu nombre" />
+            </div>
+            <div class="col-md-6 form-group mb-3">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input @bind="registrationModel.Apellido" class="form-control form-control-lg" placeholder="Ingresa tu apellido" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 form-group mb-3">
+                <label for="sexo" class="form-label">Sexo</label>
+                <select @bind="registrationModel.Sexo" class="form-select form-select-lg">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                </select>
+            </div>
+            <div class="col-md-6 form-group mb-3">
+                <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                <input type="date" @bind="registrationModel.FechaNacimiento" class="form-control form-control-lg" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 form-group mb-3">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input @bind="registrationModel.Telefono" class="form-control form-control-lg" placeholder="Ingresa tu teléfono" />
+            </div>
+            <div class="col-md-6 form-group mb-3">
+                <label for="correoElectronico" class="form-label">Correo Electrónico</label>
+                <input @bind="registrationModel.CorreoElectronico" class="form-control form-control-lg" placeholder="Ingresa tu correo electrónico" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 form-group mb-4">
+                <label for="direccion" class="form-label">Dirección</label>
+                <input @bind="registrationModel.Direccion" class="form-control form-control-lg" placeholder="Ingresa tu dirección" />
+            </div>
+            <div class="col-md-6 form-group mb-4">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" @bind="registrationModel.Password" class="form-control form-control-lg" placeholder="Crea una contraseña" />
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+            <button class="btn btn-primary btn-lg me-2 w-50" @onclick="HandleRegistration">Registrarse</button>
+            <button class="btn btn-outline-secondary btn-lg w-50" @onclick="NavigateToLogin">Ya tengo una cuenta</button>
+        </div>
+
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <div class="alert alert-danger mt-3">@errorMessage</div>
+        }
+    </div>
+</div>

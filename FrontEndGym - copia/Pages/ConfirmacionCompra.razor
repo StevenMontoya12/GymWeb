@@ -1,0 +1,16 @@
+@page "/confirmacion-compra"
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject AuthService AuthService
+@using BlazorFrontend.Services
+
+<h3>¡Compra Exitosa!</h3>
+<p>Gracias por tu compra. Tu membresía ha sido activada.</p>
+<button class="btn btn-primary" @onclick="VolverInicio">Volver a Inicio</button>
+
+@code {
+    private void VolverInicio()
+    {
+        Navigation.NavigateTo("/");
+    }
+}

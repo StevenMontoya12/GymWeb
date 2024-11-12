@@ -1,0 +1,300 @@
+@page "/RegistrarE"
+@using gymapiweb.Models
+@inject HttpClient Http
+@using BlazorFrontend.Services
+@inject AuthService AuthService
+@inject NavigationManager Navigation
+
+@if (!AuthService.IsEmpleado)
+{
+    <RedirectToLogin />
+}
+else
+{
+    <div class="container my-5">
+        <div class="text-center mb-4">
+            <h2 class="text-primary-custom">Registro de Entrenadores</h2>
+            <p class="text-muted">Administra la información de los entrenadores de manera sencilla y rápida.</p>
+            <button class="btn btn-primary btn-lg custom-hover mt-3" @onclick="OpenAddModal">Agregar Entrenador</button>
+        </div>
+
+        <!-- Cuadro de búsqueda -->
+        <div class="mb-4 text-center">
+            <input type="text" @bind="searchTerm" placeholder="Buscar por Nombre o Apellido" class="form-control" style="max-width: 300px; margin: 0 auto;" @oninput="OnSearchChanged" />
+        </div>
+
+        @if (paginatedEntrenadores == null || !paginatedEntrenadores.Any())
+        {
+            <p class="text-center text-warning">No se encontraron entrenadores registrados.</p>
+        }
+        else
+        {
+            <div class="table-container">
+                <table class="table table-hover table-bordered shadow-sm fixed-table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Sexo</th>
+                            <th>Especialidad</th>
+                            <th>Teléfono</th>
+                            <th>Correo Electrónico</th>
+                            <th>Fecha de Contratación</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var entrenador in paginatedEntrenadores)
+                        {
+                            <tr>
+                                <td>@entrenador.Nombre</td>
+                                <td>@entrenador.Apellido</td>
+                                <td>@entrenador.Sexo</td>
+                                <td>@entrenador.Especialidad</td>
+                                <td>@entrenador.Telefono</td>
+                                <td>@entrenador.CorreoElectronico</td>
+                                <td>@entrenador.FechaContratacion.ToString("yyyy-MM-dd")</td>
+                                <td class="text-center">
+                                    <button class="btn btn-warning btn-sm" @onclick="() => OpenUpdateModal(entrenador)">
+                                        <i class="bi bi-pencil-square"></i> Actualizar
+                                    </button>
+                                    <button class="btn btn-danger btn-sm" @onclick="() => DeleteEntrenador(entrenador.EntrenadorID)">
+                                        <i class="bi bi-trash"></i> Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Paginación -->
+            <div class="pagination-container">
+                <button class="btn btn-secondary" @onclick="PreviousPage" disabled="@(currentPage == 1)">Anterior</button>
+                <span>Página @currentPage de @totalPages</span>
+                <button class="btn btn-secondary" @onclick="NextPage" disabled="@(currentPage == totalPages)">Siguiente</button>
+            </div>
+        }
+    </div>
+
+    <!-- Modal para Agregar Entrenador -->
+    @if (showAddModal)
+    {
+        <div class="modal show d-block" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title">Agregar Entrenador</h5>
+                        <button type="button" class="btn-close" @onclick="CloseModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" placeholder="Nombre" @bind="newEntrenador.Nombre" class="form-control mb-2" />
+                        <input type="text" placeholder="Apellido" @bind="newEntrenador.Apellido" class="form-control mb-2" />
+                        <input type="text" placeholder="Sexo" @bind="newEntrenador.Sexo" class="form-control mb-2" />
+                        <input type="text" placeholder="Especialidad" @bind="newEntrenador.Especialidad" class="form-control mb-2" />
+                        <input type="text" placeholder="Teléfono" @bind="newEntrenador.Telefono" class="form-control mb-2" />
+                        <input type="email" placeholder="Correo Electrónico" @bind="newEntrenador.CorreoElectronico" class="form-control mb-2" />
+                        <input type="date" placeholder="Fecha de Contratación" @bind="newEntrenador.FechaContratacion" class="form-control mb-2" />
+                        <InputFile OnChange="(e) => OnFileChange(e)" class="form-control mb-2" />
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" @onclick="AddEntrenador">Guardar</button>
+                        <button class="btn btn-secondary" @onclick="CloseModal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Modal para Actualizar Entrenador -->
+    @if (showUpdateModal)
+    {
+        <div class="modal show d-block" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title">Actualizar Entrenador</h5>
+                        <button type="button" class="btn-close" @onclick="CloseModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" placeholder="Nombre" @bind="selectedEntrenador.Nombre" class="form-control mb-2" />
+                        <input type="text" placeholder="Apellido" @bind="selectedEntrenador.Apellido" class="form-control mb-2" />
+                        <input type="text" placeholder="Sexo" @bind="selectedEntrenador.Sexo" class="form-control mb-2" />
+                        <input type="text" placeholder="Especialidad" @bind="selectedEntrenador.Especialidad" class="form-control mb-2" />
+                        <input type="text" placeholder="Teléfono" @bind="selectedEntrenador.Telefono" class="form-control mb-2" />
+                        <input type="email" placeholder="Correo Electrónico" @bind="selectedEntrenador.CorreoElectronico" class="form-control mb-2" />
+                        <input type="date" placeholder="Fecha de Contratación" @bind="selectedEntrenador.FechaContratacion" class="form-control mb-2" />
+                        <InputFile OnChange="(e) => OnFileChange(e, true)" class="form-control mb-2" />
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" @onclick="UpdateEntrenador">Guardar Cambios</button>
+                        <button class="btn btn-secondary" @onclick="CloseModal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@code {
+    private List<Entrenador> entrenadores = new();
+    private List<Entrenador> paginatedEntrenadores = new();
+    private List<Entrenador> filteredEntrenadores = new();
+    private Entrenador newEntrenador = new Entrenador();
+    private Entrenador selectedEntrenador;
+    private bool showAddModal = false;
+    private bool showUpdateModal = false;
+    private string? notificationMessage;
+    private string notificationClass = "alert-success";
+    private string searchTerm = "";
+
+    private int pageSize = 5;
+    private int currentPage = 1;
+    private int totalPages => (int)Math.Ceiling((double)filteredEntrenadores.Count / pageSize);
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!AuthService.IsEmpleado)
+        {
+            Navigation.NavigateTo("/acceso-denegado");
+            return;
+        }
+
+        await LoadEntrenadores();
+    }
+
+    private async Task LoadEntrenadores()
+    {
+        entrenadores = await Http.GetFromJsonAsync<List<Entrenador>>("api/Entrenadores");
+        FilterEntrenadores();
+    }
+
+    private void FilterEntrenadores()
+    {
+        filteredEntrenadores = string.IsNullOrWhiteSpace(searchTerm)
+            ? entrenadores
+            : entrenadores.Where(e => e.Nombre.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                                      e.Apellido.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)).ToList();
+
+        currentPage = 1;
+        UpdatePaginatedEntrenadores();
+    }
+
+    private void UpdatePaginatedEntrenadores()
+    {
+        paginatedEntrenadores = filteredEntrenadores
+            .Skip((currentPage - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
+    }
+
+    private void NextPage()
+    {
+        if (currentPage < totalPages)
+        {
+            currentPage++;
+            UpdatePaginatedEntrenadores();
+        }
+    }
+
+    private void PreviousPage()
+    {
+        if (currentPage > 1)
+        {
+            currentPage--;
+            UpdatePaginatedEntrenadores();
+        }
+    }
+
+    private void OnSearchChanged(ChangeEventArgs e)
+    {
+        searchTerm = e.Value?.ToString() ?? "";
+        FilterEntrenadores();
+    }
+
+    private void OpenAddModal()
+    {
+        newEntrenador = new Entrenador();
+        showAddModal = true;
+        notificationMessage = null;
+    }
+
+    private void OpenUpdateModal(Entrenador entrenador)
+    {
+        selectedEntrenador = entrenador;
+        showUpdateModal = true;
+        notificationMessage = null;
+    }
+
+    private void CloseModal()
+    {
+        showAddModal = false;
+        showUpdateModal = false;
+    }
+
+    private async Task AddEntrenador()
+    {
+        var response = await Http.PostAsJsonAsync("api/Entrenadores", newEntrenador);
+        if (response.IsSuccessStatusCode)
+        {
+            notificationMessage = "Entrenador agregado exitosamente.";
+            notificationClass = "alert-success";
+            await LoadEntrenadores();
+            CloseModal();
+        }
+        else
+        {
+            notificationMessage = "Error al agregar entrenador.";
+            notificationClass = "alert-danger";
+        }
+    }
+
+    private async Task UpdateEntrenador()
+    {
+        var response = await Http.PutAsJsonAsync($"api/Entrenadores/{selectedEntrenador.EntrenadorID}", selectedEntrenador);
+        if (response.IsSuccessStatusCode)
+        {
+            notificationMessage = "Entrenador actualizado exitosamente.";
+            notificationClass = "alert-success";
+            await LoadEntrenadores();
+            CloseModal();
+        }
+        else
+        {
+            notificationMessage = "Error al actualizar entrenador.";
+            notificationClass = "alert-danger";
+        }
+    }
+
+    private async Task DeleteEntrenador(Guid entrenadorID)
+    {
+        var response = await Http.DeleteAsync($"api/Entrenadores/{entrenadorID}");
+        if (response.IsSuccessStatusCode)
+        {
+            notificationMessage = "Entrenador eliminado exitosamente.";
+            notificationClass = "alert-success";
+            await LoadEntrenadores();
+        }
+        else
+        {
+            notificationMessage = "Error al eliminar entrenador.";
+            notificationClass = "alert-danger";
+        }
+    }
+
+    private async Task OnFileChange(InputFileChangeEventArgs e, bool isUpdating = false)
+    {
+        var file = e.File;
+        var buffer = new byte[file.Size];
+        await file.OpenReadStream().ReadAsync(buffer);
+
+        if (isUpdating)
+        {
+            selectedEntrenador.Foto = buffer;
+        }
+        else
+        {
+            newEntrenador.Foto = buffer;
+        }
+    }
+}

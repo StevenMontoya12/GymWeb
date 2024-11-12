@@ -1,0 +1,93 @@
+/* General container styling */
+.pagos-container[b-dlv78mpmc5] {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styles */
+.text-primary-custom[b-dlv78mpmc5] {
+    color: #007bff;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+.text-muted[b-dlv78mpmc5] {
+    font-size: 1rem;
+}
+
+/* Button styling */
+.custom-hover[b-dlv78mpmc5] {
+    transition: all 0.3s ease;
+}
+
+.custom-hover:hover[b-dlv78mpmc5] {
+    background-color: #0056b3;
+    color: #ffffff;
+}
+
+/* Table styling */
+.table[b-dlv78mpmc5] {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table thead th[b-dlv78mpmc5] {
+    background-color: #007bff;
+    color: white;
+    font-weight: 500;
+    text-align: center;
+}
+
+.table tbody tr:hover[b-dlv78mpmc5] {
+    background-color: #f1f1f1;
+}
+
+/* Center-align the action buttons */
+.table .text-center[b-dlv78mpmc5] {
+    text-align: center;
+}
+
+/* Button group styling */
+.btn-group .btn[b-dlv78mpmc5] {
+    margin: 0 2px;
+}
+
+.btn-group .btn i[b-dlv78mpmc5] {
+    margin-right: 4px;
+}
+
+/* Modal styles */
+.modal-header[b-dlv78mpmc5] {
+    border-bottom: 2px solid #007bff;
+}
+
+.modal-header h5[b-dlv78mpmc5] {
+    font-weight: 600;
+}
+
+.modal-body .form-label[b-dlv78mpmc5] {
+    font-weight: 500;
+    color: #333;
+}
+
+.modal-body input[b-dlv78mpmc5] {
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.modal-footer .btn[b-dlv78mpmc5] {
+    padding: 8px 12px;
+}
+
+.modal-footer .btn-primary[b-dlv78mpmc5] {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.modal-footer .btn-primary:hover[b-dlv78mpmc5] {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}

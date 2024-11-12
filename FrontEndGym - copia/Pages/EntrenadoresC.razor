@@ -1,0 +1,52 @@
+@page "/EntrenadoresC"
+@using gymapiweb.Models
+@inject HttpClient Http
+
+<h2 class="text-center my-4">Nuestros Entrenadores</h2>
+<div class="card-container">
+    @if (entrenadores == null)
+    {
+        <p class="text-center text-warning">Cargando datos de entrenadores...</p>
+    }
+    else if (!entrenadores.Any())
+    {
+        <p class="text-center text-muted">No se encontraron entrenadores registrados.</p>
+    }
+    else
+    {
+        @foreach (var entrenador in entrenadores)
+        {
+            <div class="card">
+                <div class="card-header">
+                    @if (!string.IsNullOrEmpty(entrenador.FotoBase64))
+                    {
+                        <img src="data:image/jpeg;base64,@entrenador.FotoBase64" alt="Imagen de @entrenador.Nombre" />
+
+                    }
+                    else
+                    {
+                        <img src="ruta_de_la_imagen_predeterminada" alt="Imagen predeterminada de @entrenador.Nombre" />
+                    }
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@entrenador.Nombre @entrenador.Apellido</h5>
+                    <p class="card-text">
+                        <strong>Especialidad:</strong> <span class="badge">@entrenador.Especialidad</span>
+                    </p>
+                    <p class="card-text"><strong>Teléfono:</strong> @entrenador.Telefono</p>
+                    <p class="card-text"><strong>Correo:</strong> <i class="bi bi-envelope-fill"></i> <a href="mailto:@entrenador.CorreoElectronico">@entrenador.CorreoElectronico</a></p>
+                    <p class="card-text"><small class="text-muted">Contratado el: @entrenador.FechaContratacion.ToString("yyyy-MM-dd")</small></p>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+@code {
+    private List<EntrenadorDto> entrenadores = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        entrenadores = await Http.GetFromJsonAsync<List<EntrenadorDto>>("api/Entrenadores");
+    }
+}

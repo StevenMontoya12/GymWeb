@@ -1,0 +1,84 @@
+@page "/login"
+@using BlazorFrontend.Models
+@using BlazorFrontend.Services
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject AuthService AuthService
+
+@code {
+    private LoginModel loginModel = new LoginModel();
+    private string? errorMessage;
+
+   private async Task HandleLogin()
+{
+    try
+    {
+        var response = await Http.PostAsJsonAsync("api/login", loginModel);
+        if (response.IsSuccessStatusCode)
+        {
+            var result = await response.Content.ReadFromJsonAsync<LoginResponse>();
+
+            if (!string.IsNullOrEmpty(result?.Token))
+            {
+                await AuthService.LoginAsync(result.Token); // Almacenar el token y actualizar el estado
+
+                if (AuthService.IsEmpleado)
+                {
+                    Navigation.NavigateTo("/empleado");
+                }
+                else if (AuthService.IsCliente)
+                {
+                    Navigation.NavigateTo("/cliente");
+                }
+                else
+                {
+                    errorMessage = "Rol desconocido";
+                }
+            }
+            else
+            {
+                errorMessage = "Error al obtener el token de autenticación.";
+            }
+        }
+        else
+        {
+            errorMessage = "Credenciales inválidas";
+        }
+    }
+    catch (Exception ex)
+    {
+        errorMessage = $"Error: {ex.Message}";
+    }
+}
+
+    private void NavigateToRegister()
+    {
+        Navigation.NavigateTo("/registrar");
+    }
+}
+
+<div class="login-container">
+    <div class="login-card shadow-lg p-4">
+        <h2 class="text-center mb-4">Iniciar Sesión</h2>
+        
+        <div class="form-group">
+            <label for="correoElectronico">Correo Electrónico</label>
+            <input @bind="loginModel.CorreoElectronico" type="email" class="form-control" placeholder="Ingresa tu correo electrónico" />
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="password">Contraseña</label>
+            <input type="password" @bind="loginModel.Password" class="form-control" placeholder="Ingresa tu contraseña" />
+        </div>
+
+        <div class="button-group mt-4">
+            <button class="btn btn-primary btn-login" @onclick="HandleLogin">Iniciar Sesión</button>
+            <button class="btn btn-secondary btn-register" @onclick="NavigateToRegister">Registrarse</button>
+        </div>
+
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <div class="alert alert-danger mt-3 text-center">@errorMessage</div>
+        }
+    </div>
+</div>

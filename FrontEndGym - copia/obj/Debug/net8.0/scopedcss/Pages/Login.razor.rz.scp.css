@@ -1,0 +1,82 @@
+/* Contenedor de login en la parte superior */
+/* Contenedor de login en la parte superior */
+.login-container[b-w2ddmdhday] {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Ajusta el contenedor a la parte superior */
+    padding-top: 20px;
+    background-color: #ffffff;
+    min-height: 100vh;
+}
+
+/* Tarjeta de login */
+.login-card[b-w2ddmdhday] {
+    width: 100%;
+    max-width: 400px;
+    min-height: 320px; /* Altura mínima para mantener un tamaño compacto */
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Encabezado del login */
+h2[b-w2ddmdhday] {
+    color: #333;
+    font-weight: 700;
+}
+
+/* Botones de acción */
+.button-group[b-w2ddmdhday] {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Botón de inicio de sesión */
+.btn-login[b-w2ddmdhday] {
+    width: 48%;
+    padding: 10px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover[b-w2ddmdhday] {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* Botón de registro */
+.btn-register[b-w2ddmdhday] {
+    width: 48%;
+    padding: 10px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s ease;
+}
+
+.btn-register:hover[b-w2ddmdhday] {
+    background-color: #e0e0e0;
+}
+
+/* Bordes y fondos para los inputs */
+.form-control[b-w2ddmdhday] {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 12px;
+    font-size: 0.95rem;
+}
+
+/* Fondo y estilo para el mensaje de error */
+.alert-danger[b-w2ddmdhday] {
+    border-radius: 5px;
+    background-color: #ffdddd;
+    color: #d9534f;
+}
+
+/* Ajuste de márgenes */
+.mt-3[b-w2ddmdhday] {
+    margin-top: 1rem !important;
+}

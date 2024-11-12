@@ -1,0 +1,94 @@
+/* Ajustar altura del contenedor y posición del formulario */
+.register-container[b-pqjc27ep1f] {
+    min-height: 50vh;
+    background-color: #ffffff;
+  
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alineación superior */
+}
+
+/* Ajustes de la tarjeta de registro */
+.register-card[b-pqjc27ep1f] {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    margin-top: 20px; /* Opcional: margen para despegar un poco del borde superior */
+}
+
+
+/* Estilo para el título */
+.register-card h2[b-pqjc27ep1f] {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Estilo del texto descriptivo */
+.register-card p.text-muted[b-pqjc27ep1f] {
+    font-size: 0.95rem;
+}
+
+/* Estilo para los labels */
+.form-label[b-pqjc27ep1f] {
+    font-weight: 600;
+    color: #555;
+}
+
+/* Inputs grandes y estilizados */
+.form-control-lg[b-pqjc27ep1f], .form-select-lg[b-pqjc27ep1f] {
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s;
+}
+
+.form-control-lg:focus[b-pqjc27ep1f], .form-select-lg:focus[b-pqjc27ep1f] {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Botones grandes y llamativos */
+.btn-lg[b-pqjc27ep1f] {
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.btn-primary[b-pqjc27ep1f] {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #ffffff;
+}
+
+.btn-primary:hover[b-pqjc27ep1f] {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-outline-secondary[b-pqjc27ep1f] {
+    border-color: #6c757d;
+    color: #6c757d;
+}
+
+.btn-outline-secondary:hover[b-pqjc27ep1f] {
+    background-color: #f8f9fa;
+    border-color: #6c757d;
+}
+
+/* Espacio entre botones */
+.btn-lg.me-2[b-pqjc27ep1f] {
+    margin-right: 10px;
+}
+
+/* Estilo para el mensaje de error */
+.alert-danger[b-pqjc27ep1f] {
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}

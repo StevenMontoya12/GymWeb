@@ -1,0 +1,149 @@
+/* Estilo base */
+body[b-4gfasref73] {
+    background-color: #f8f9fa;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Título principal */
+h2.text-primary-custom[b-4gfasref73] {
+    color: #000;
+}
+
+/* Botón "Agregar Entrenador" en negro */
+.btn-primary.custom-hover[b-4gfasref73] {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+.btn-primary.custom-hover:hover[b-4gfasref73] {
+    background-color: #333;
+    border-color: #333;
+}
+
+/* Encabezados de tabla */
+.table thead th[b-4gfasref73] {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    background-color: #212121;
+    color: #ffffff;
+    border-bottom: 2px solid #333;
+    padding: 8px 12px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* Estilo para celdas de la tabla */
+.table td[b-4gfasref73] {
+    font-size: 0.9rem;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Alternancia de color en filas de tabla */
+.table tbody tr:nth-child(even)[b-4gfasref73] {
+    background-color: #f9f9f9;
+}
+
+.table tbody tr:hover[b-4gfasref73] {
+    background-color: #eaf5ff;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilos para los botones */
+.btn-warning[b-4gfasref73], .btn-danger[b-4gfasref73] {
+    color: #fff;
+}
+
+/* Ajustes adicionales para botones */
+.table .btn[b-4gfasref73] {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover en los botones */
+.table .btn:hover[b-4gfasref73] {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Alinear botones en una fila */
+.table td.text-center[b-4gfasref73] {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 10px;
+}
+
+/* Colores de hover específicos para los botones */
+.btn-warning:hover[b-4gfasref73] {
+    background-color: #e0a800;
+}
+
+.btn-danger:hover[b-4gfasref73] {
+    background-color: #c82333;
+}
+
+/* Modificación para el modal */
+.modal-title[b-4gfasref73] {
+    font-weight: bold;
+    color: #fff;
+}
+
+.modal-body input[type="text"][b-4gfasref73],
+.modal-body input[type="email"][b-4gfasref73],
+.modal-body input[type="date"][b-4gfasref73],
+.modal-body input[type="password"][b-4gfasref73] {
+    border-radius: 0.5rem;
+    background-color: #f8f9fa;
+    color: #333;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+.modal-footer .btn-primary[b-4gfasref73] {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.modal-footer .btn-secondary[b-4gfasref73] {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+/* Sombras y bordes para los modales */
+.modal-content[b-4gfasref73] {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor principal para registro */
+.register-container[b-4gfasref73] {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 20px;
+    background-color: #ffffff;
+    min-height: 100vh;
+    overflow-x: auto;
+}
+
+
+
+/* Contenedor de paginación */
+.pagination-container[b-4gfasref73] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.pagination-container button[b-4gfasref73] {
+    min-width: 100px;
+}

@@ -1,0 +1,37 @@
+﻿@inherits LayoutComponentBase
+@inject AuthService AuthService
+@using BlazorFrontend.Services
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-1 d-none d-md-block bg-light sidebar nav-scrollable">
+            <div class="sidebar-sticky pt-3">
+                <NavMenu />
+            </div>
+        </nav>
+
+        <!-- Main content -->
+        <main role="main" class="main-content col-md-12 ml-sm-auto col-lg-10 px-0 pt-0 mt-0">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-0 pb-0 mb-0 mt-0 border-bottom color-change">
+                <a class="h2 GymFit" href="/">GymFit</a>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                        <a href="/login" class="btn btn-sm btn-outline-secondary custom-text-hover">Iniciar Sesión</a>
+                        <a href="/registrar" class="btn btn-sm btn-outline-secondary ms-2 custom-text-hover">Registrarse</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenido de la página -->
+            <article>
+                @Body
+            </article>
+        </main>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer bg-dark text-white text-center py-3 mt-0">
+    <p>&copy; 2024 GymFit - Todos los derechos reservados.</p>
+</footer>

@@ -1,0 +1,218 @@
+/* cliente.css */
+
+/* Estilo base */
+body {
+    background-color: #f8f9fa; /* Fondo claro para el cuerpo */
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Título principal */
+h2.text-primary {
+    color: #000; /* Color negro para el título */
+}
+
+/* Botón "Agregar Cliente" en negro */
+.btn-primary.custom-hover {
+    background-color: #000; /* Fondo negro para el botón */
+    color: #fff;
+    border-color: #000;
+}
+.btn-primary.custom-hover:hover {
+    background-color: #333; /* Hover ligeramente más claro */
+    border-color: #333;
+}
+
+/* Encabezados de tabla */
+.table thead th {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    background-color: #212121; /* Fondo oscuro para encabezado */
+    color: #ffffff; /* Texto blanco */
+    border-bottom: 2px solid #333;
+}
+
+/* Estilo para celdas de la tabla */
+.table td {
+    font-size: 0.9rem;
+    background-color: #fff; /* Fondo claro en celdas */
+    color: #333;
+}
+
+/* Alternancia de color en filas de tabla */
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tbody tr:hover {
+    background-color: #eaf5ff;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilos para los botones */
+.btn-warning, .btn-danger {
+    color: #fff;
+}
+
+/* Ajustes adicionales para botones */
+.table .btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Hover en los botones */
+.table .btn:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Alinear botones en una fila */
+.table td.text-center {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 10px;
+}
+
+/* Colores de hover específicos para los botones */
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Modificación para el modal */
+.modal-title {
+    font-weight: bold;
+    color: #fff;
+}
+
+.modal-body input[type="text"],
+.modal-body input[type="email"],
+.modal-body input[type="date"],
+.modal-body input[type="password"] {
+    border-radius: 0.5rem;
+    background-color: #f8f9fa;
+    color: #333;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+.modal-footer .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.modal-footer .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+/* Sombras y bordes para los modales */
+.modal-content {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Encabezado "Registro de Clientes" en negro */
+.container h2.text-primary-custom {
+    color: #000 !important;
+}
+
+/* Estilo para el contenedor del buscador */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el campo de entrada del buscador */
+.search-container input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.search-container input[type="text"]::placeholder {
+    color: #999;
+}
+
+.search-container input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+/* Contenedor de paginación */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Botones de paginación */
+.pagination-container button {
+    min-width: 100px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.pagination-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination-container button:not(:disabled):hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para el texto de la paginación */
+.pagination-container span {
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+}
+
+
+
+/* Estilo de notificación de éxito */
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de notificación de error */
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+

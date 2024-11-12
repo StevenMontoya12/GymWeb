@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrarse o Iniciar Sesión</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/login.js" defer></script> <!-- Asegúrate de que el script se cargue después del DOM -->
+</head>
+<body>
+<div id="back">
+  <canvas id="canvas" class="canvas-back"></canvas>
+  <div class="backRight"></div>
+  <div class="backLeft"></div>
+</div>
+
+<div id="slideBox">
+  <div class="topLayer">
+    <div class="left">
+      <div class="content">
+        <h2>Registrarse</h2>
+        <form id="form-signup" method="post">
+          <div class="form-element form-stack">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input id="nombre" type="text" name="nombre" required>
+          </div>
+          <div class="form-element form-stack">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input id="apellido" type="text" name="apellido" required>
+          </div>
+          <div class="form-element form-stack">
+            <label for="sexo" class="form-label">Sexo</label>
+            <select id="sexo" name="sexo" required>
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
+            </select>
+          </div>
+          <div class="form-element form-stack">
+            <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+            <input id="fechaNacimiento" type="date" name="fechaNacimiento">
+          </div>
+          <div class="form-element form-stack">
+            <label for="telefono" class="form-label">Teléfono</label>
+            <input id="telefono" type="tel" name="telefono">
+          </div>
+          <div class="form-element form-stack">
+            <label for="correoElectronicoSignup" class="form-label">Correo Electrónico</label>
+            <input id="correoElectronicoSignup" type="email" name="correoElectronico" required>
+          </div>
+          <div class="form-element form-stack">
+            <label for="direccion" class="form-label">Dirección</label>
+            <input id="direccion" type="text" name="direccion">
+          </div>
+          <div class="form-element form-stack">
+            <label for="password-signup" class="form-label">Contraseña</label>
+            <input id="password-signup" type="password" name="password" required>
+          </div>
+          <div class="form-element form-checkbox">
+            <input id="confirm-terms" type="checkbox" name="confirm" value="yes" class="checkbox" required>
+            <label for="confirm-terms">Acepto los <a href="#">Términos de Servicio</a> y <a href="#">Política de Privacidad</a></label>
+          </div>
+          <div class="form-element form-submit">
+            <button id="signUp" class="signup" type="submit" name="signup">Registrarse</button>
+            <button id="goLeft" class="signup off" type="button">Iniciar Sesión</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="right">
+      <div class="content">
+        <h2>Iniciar Sesión</h2>
+        <form id="loginForm" method="post">
+            <div class="form-element form-stack">
+                <label for="correoElectronico" class="form-label">Correo Electrónico</label>
+                <input id="correoElectronico" type="email" name="correoElectronico" required>
+            </div>
+            <div class="form-element form-stack">
+                <label for="password" class="form-label">Contraseña</label>
+                <input id="password" type="password" name="password" required>
+            </div>
+            <div class="form-element form-submit">
+                <button id="login" class="login" type="submit" name="login">Iniciar Sesión</button>
+                <button id="goRight" class="login off" type="button">Registrarse</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- jQuery y otros scripts -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.3/paper-full.min.js'></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>

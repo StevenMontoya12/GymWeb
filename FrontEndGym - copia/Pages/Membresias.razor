@@ -1,0 +1,111 @@
+@page "/membresias"
+@using BlazorFrontend.Models
+@using BlazorFrontend.Services
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject AuthService AuthService
+
+<div class="container">
+    <h2 class="text-center mt-5 mb-4 titulo">Selecciona tu Membresía</h2>
+
+    @if (membresias == null)
+    {
+        if (loadingError)
+        {
+            <div class="alert alert-danger text-center">
+                Error al cargar las membresías. Por favor, intenta de nuevo más tarde.
+            </div>
+        }
+        else
+        {
+            <p class="text-center text-muted">Cargando membresías...</p>
+        }
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var membresia in membresias)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card membresia-card shadow-lg">
+                        <div class="card-header text-center bg-dark text-white">
+                            <h5 class="card-title"><i class="bi bi-star me-2"></i>@membresia.TipoMembresia</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text descripcion">@membresia.Descripcion</p>
+                            <p class="card-text duracion"><i class="bi bi-calendar3 me-2"></i><strong>Duración:</strong> @membresia.DuracionMeses meses</p>
+                            <p class="card-text precio"><i class="bi bi-currency-dollar me-2"></i><strong>Precio:</strong> $@membresia.Costo</p>
+                            <button class="btn btn-comprar" @onclick="() => ComprarMembresia(membresia.MembresiaID, membresia.Costo)">
+                                <i class="bi bi-cart-fill me-2"></i> Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(notificationMessage))
+    {
+        <div class="alert alert-success mt-4 text-center">@notificationMessage</div>
+    }
+</div>
+
+@code {
+    private List<Membresia> membresias;
+    private string notificationMessage;
+    private bool loadingError = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            membresias = await Http.GetFromJsonAsync<List<Membresia>>("api/membresias");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al cargar membresías: {ex.Message}");
+            loadingError = true;
+        }
+    }
+
+    private async Task ComprarMembresia(Guid membresiaId, decimal monto)
+    {
+        var clienteId = await AuthService.GetClienteIDAsync();
+        if (clienteId == Guid.Empty)
+        {
+            notificationMessage = "Error: Debes iniciar sesión para comprar una membresía.";
+            return;
+        }
+
+        var pago = new Pago
+        {
+            ClienteID = clienteId,
+            MembresiaID = membresiaId,
+            MontoPagado = monto,
+            FechaPago = DateTime.Now
+        };
+
+        try
+        {
+            var response = await Http.PostAsJsonAsync("api/pagos", pago);
+
+            if (response.IsSuccessStatusCode)
+            {
+                notificationMessage = "Pago realizado exitosamente. ¡Gracias por tu compra!";
+                Navigation.NavigateTo("/confirmacion-compra");
+            }
+            else
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                notificationMessage = $"Error al procesar el pago: {errorContent}";
+                Console.WriteLine($"Error al procesar el pago: {errorContent}");
+            }
+        }
+        catch (Exception ex)
+        {
+            notificationMessage = "Error al procesar el pago. Por favor, inténtalo nuevamente.";
+            Console.WriteLine($"Excepción al procesar el pago: {ex.Message}");
+        }
+    }
+}

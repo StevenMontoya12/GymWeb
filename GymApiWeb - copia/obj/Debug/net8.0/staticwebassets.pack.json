@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\GymApiWeb - copia\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\GymApiWeb - copia\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\GymApiWeb - copia\\wwwroot\\js\\login.js",
+      "PackagePath": "staticwebassets\\js\\login.js"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\GymApiWeb - copia\\wwwroot\\vista\\cliente.html",
+      "PackagePath": "staticwebassets\\vista\\cliente.html"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\GymApiWeb - copia\\wwwroot\\vista\\empleado.html",
+      "PackagePath": "staticwebassets\\vista\\empleado.html"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.GymApiWeb.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.GymApiWeb.props",
+      "PackagePath": "build\\GymApiWeb.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.GymApiWeb.props",
+      "PackagePath": "buildMultiTargeting\\GymApiWeb.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.GymApiWeb.props",
+      "PackagePath": "buildTransitive\\GymApiWeb.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,317 @@
+@page "/clientes"
+@using BlazorFrontend.Models
+@using BlazorFrontend.Services
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject AuthService AuthService
+
+@if (!AuthService.IsEmpleado)
+{
+    <p class="text-danger">Acceso denegado. No tienes permiso para ver esta página.</p>
+}
+else
+{
+    <div class="container my-5 clientes-container">
+        <div class="text-center mb-4">
+            <h2 class="text-primary-custom">Registro de Clientes</h2>
+            <p class="text-muted">Administra la información de los clientes de manera sencilla y rápida.</p>
+            <button class="btn btn-primary btn-lg custom-hover mt-3" @onclick="OpenAddModal">Agregar Cliente</button>
+        </div>
+
+        <!-- Notificación de éxito -->
+        @if (!string.IsNullOrEmpty(notificationMessage))
+        {
+            <div class="alert @notificationClass text-center" role="alert">
+                @notificationMessage
+            </div>
+        }
+
+        <!-- Cuadro de búsqueda -->
+        <div class="mb-4 text-center">
+            <input type="text" @bind="searchText" placeholder="Buscar por Nombre o Apellido" class="form-control" style="max-width: 300px; margin: 0 auto;" @oninput="OnSearchTextChanged" />
+        </div>
+
+        @if (paginatedClientes == null || !paginatedClientes.Any())
+        {
+            <p class="text-center text-muted">No se encontraron clientes registrados.</p>
+        }
+        else
+        {
+            <div class="table-container">
+                <table class="table table-hover table-bordered shadow-sm fixed-table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Sexo</th>
+                            <th>Fecha de Nacimiento</th>
+                            <th>Teléfono</th>
+                            <th>Correo Electrónico</th>
+                            <th>Dirección</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var cliente in paginatedClientes)
+                        {
+                            <tr>
+                                <td>@cliente.Nombre</td>
+                                <td>@cliente.Apellido</td>
+                                <td>@cliente.Sexo</td>
+                                <td>@cliente.FechaNacimiento?.ToString("yyyy-MM-dd")</td>
+                                <td>@cliente.Telefono</td>
+                                <td>@cliente.CorreoElectronico</td>
+                                <td>@cliente.Direccion</td>
+                                <td class="text-center">
+                                    <button class="btn btn-warning btn-sm" @onclick="() => OpenUpdateModal(cliente)">
+                                        <i class="bi bi-pencil-square"></i> Actualizar
+                                    </button>
+                                    <button class="btn btn-danger btn-sm" @onclick="() => DeleteCliente(cliente.ClienteID)">
+                                        <i class="bi bi-trash"></i> Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Paginación -->
+            <div class="pagination-container">
+                <button class="btn btn-secondary" @onclick="PreviousPage" disabled="@(currentPage == 1)">Anterior</button>
+                <span>Página @currentPage de @totalPages</span>
+                <button class="btn btn-secondary" @onclick="NextPage" disabled="@(currentPage == totalPages)">Siguiente</button>
+            </div>
+        }
+    </div>
+
+    <!-- Modal para Agregar Cliente -->
+    @if (showAddModal)
+    {
+        <div class="modal show d-block" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title">Agregar Cliente</h5>
+                        <button type="button" class="btn-close" @onclick="CloseModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" placeholder="Nombre" @bind="newCliente.Nombre" class="form-control mb-2" />
+                        <input type="text" placeholder="Apellido" @bind="newCliente.Apellido" class="form-control mb-2" />
+                        <input type="text" placeholder="Sexo" @bind="newCliente.Sexo" class="form-control mb-2" />
+                        <input type="date" placeholder="Fecha de Nacimiento" @bind="newCliente.FechaNacimiento" class="form-control mb-2" />
+                        <input type="text" placeholder="Teléfono" @bind="newCliente.Telefono" class="form-control mb-2" />
+                        <input type="email" placeholder="Correo Electrónico" @bind="newCliente.CorreoElectronico" class="form-control mb-2" />
+                        <input type="text" placeholder="Dirección" @bind="newCliente.Direccion" class="form-control mb-2" />
+                        <input type="password" placeholder="Contraseña" @bind="newCliente.Password" class="form-control mb-2" />
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" @onclick="AddCliente">Guardar</button>
+                        <button class="btn btn-secondary" @onclick="CloseModal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Modal para Actualizar Cliente -->
+    @if (showUpdateModal)
+    {
+        <div class="modal show d-block" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title">Actualizar Cliente</h5>
+                        <button type="button" class="btn-close" @onclick="CloseModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" placeholder="Nombre" @bind="selectedCliente.Nombre" class="form-control mb-2" />
+                        <input type="text" placeholder="Apellido" @bind="selectedCliente.Apellido" class="form-control mb-2" />
+                        <input type="text" placeholder="Sexo" @bind="selectedCliente.Sexo" class="form-control mb-2" />
+                        <input type="date" placeholder="Fecha de Nacimiento" @bind="selectedCliente.FechaNacimiento" class="form-control mb-2" />
+                        <input type="text" placeholder="Teléfono" @bind="selectedCliente.Telefono" class="form-control mb-2" />
+                        <input type="email" placeholder="Correo Electrónico" @bind="selectedCliente.CorreoElectronico" class="form-control mb-2" />
+                        <input type="text" placeholder="Dirección" @bind="selectedCliente.Direccion" class="form-control mb-2" />
+                        <input type="password" placeholder="Contraseña" @bind="selectedCliente.Password" class="form-control mb-2" />
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" @onclick="UpdateCliente">Guardar Cambios</button>
+                        <button class="btn btn-secondary" @onclick="CloseModal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@code {
+    private List<Cliente> clientes = new();
+    private List<Cliente> paginatedClientes = new();
+    private List<Cliente> filteredClientes = new();
+    private Cliente newCliente = new Cliente();
+    private Cliente selectedCliente;
+    private bool showAddModal = false;
+    private bool showUpdateModal = false;
+    private string? notificationMessage;
+    private string notificationClass = "alert-success";
+    private string searchText = "";
+
+    private int pageSize = 5;
+    private int currentPage = 1;
+    private int totalPages => (int)Math.Ceiling((double)filteredClientes.Count / pageSize);
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (AuthService.IsEmpleado)
+        {
+            await LoadClientes();
+        }
+        else
+        {
+            Navigation.NavigateTo("/acceso-denegado");
+        }
+    }
+
+    private async Task LoadClientes()
+    {
+        clientes = await Http.GetFromJsonAsync<List<Cliente>>("http://localhost:5085/api/Clientes");
+        FilterClientes();
+    }
+
+    private void FilterClientes()
+    {
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            filteredClientes = clientes;
+        }
+        else
+        {
+            filteredClientes = clientes
+                .Where(c => (c.Nombre?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                            (c.Apellido?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false))
+                .ToList();
+        }
+        currentPage = 1;
+        UpdatePaginatedClientes();
+    }
+
+    private void OnSearchTextChanged(ChangeEventArgs e)
+    {
+        searchText = e.Value?.ToString() ?? "";
+        FilterClientes();
+    }
+
+    private void UpdatePaginatedClientes()
+    {
+        paginatedClientes = filteredClientes
+            .Skip((currentPage - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
+    }
+
+    private void NextPage()
+    {
+        if (currentPage < totalPages)
+        {
+            currentPage++;
+            UpdatePaginatedClientes();
+        }
+    }
+
+    private void PreviousPage()
+    {
+        if (currentPage > 1)
+        {
+            currentPage--;
+            UpdatePaginatedClientes();
+        }
+    }
+
+    private void OpenAddModal()
+    {
+        newCliente = new Cliente();
+        showAddModal = true;
+        notificationMessage = null;
+    }
+
+    private void OpenUpdateModal(Cliente cliente)
+    {
+        selectedCliente = cliente;
+        showUpdateModal = true;
+        notificationMessage = null;
+    }
+
+    private void CloseModal()
+    {
+        showAddModal = false;
+        showUpdateModal = false;
+    }
+
+    private async Task AddCliente()
+    {
+        var response = await Http.PostAsJsonAsync("http://localhost:5085/api/Clientes", newCliente);
+        if (response.IsSuccessStatusCode)
+        {
+            notificationMessage = "Cliente agregado exitosamente.";
+            notificationClass = "alert-success";
+            await LoadClientes();
+            CloseModal();
+        }
+        else
+        {
+            notificationMessage = "Error al agregar cliente.";
+            notificationClass = "alert-danger";
+        }
+    }
+
+    private async Task UpdateCliente()
+    {
+        if (string.IsNullOrEmpty(selectedCliente.Password))
+        {
+            selectedCliente.Password = null;
+        }
+
+        var response = await Http.PutAsJsonAsync($"http://localhost:5085/api/Clientes/{selectedCliente.ClienteID}", selectedCliente);
+        if (response.IsSuccessStatusCode)
+        {
+            notificationMessage = "Cliente actualizado exitosamente.";
+            notificationClass = "alert-success";
+            await LoadClientes();
+            CloseModal();
+        }
+        else
+        {
+            notificationMessage = "Error al actualizar cliente.";
+            notificationClass = "alert-danger";
+        }
+    }
+
+    private async Task DeleteCliente(Guid clienteId)
+    {
+        var response = await Http.DeleteAsync($"http://localhost:5085/api/Clientes/{clienteId}");
+        if (response.IsSuccessStatusCode)
+        {
+            notificationMessage = "Cliente eliminado exitosamente.";
+            notificationClass = "alert-success";
+            await LoadClientes();
+        }
+        else
+        {
+            notificationMessage = "Error al eliminar cliente.";
+            notificationClass = "alert-danger";
+        }
+    }
+
+    public class Cliente
+    {
+        public Guid ClienteID { get; set; }
+        public string? Nombre { get; set; }
+        public string? Apellido { get; set; }
+        public string? Sexo { get; set; }
+        public DateTime? FechaNacimiento { get; set; }
+        public string? Telefono { get; set; }
+        public string? CorreoElectronico { get; set; }
+        public string? Direccion { get; set; }
+        public string? Password { get; set; }
+    }
+}

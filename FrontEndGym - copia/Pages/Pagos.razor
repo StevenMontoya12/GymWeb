@@ -1,0 +1,180 @@
+@page "/Pagos"
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject AuthService AuthService
+@using BlazorFrontend.Services
+
+@if (!AuthService.IsEmpleado)
+{
+    <UnauthorizedAccess />
+}
+else
+{
+    <div class="container my-5 pagos-container">
+        <div class="text-center mb-4">
+            <h2 class="text-primary-custom">Gestión de Pagos</h2>
+            <p class="text-muted">Administra los pagos de los clientes de manera sencilla y rápida.</p>
+            <button class="btn btn-primary btn-lg custom-hover mt-3 d-flex align-items-center" @onclick="OpenAddPaymentModal">
+                <i class="bi bi-plus-circle me-2"></i> Agregar Pago
+            </button>
+        </div>
+
+        <!-- Tabla de pagos -->
+        @if (pagos == null || !pagos.Any())
+        {
+            <p class="text-center text-muted">No se encontraron registros de pagos.</p>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-striped table-hover shadow-sm rounded">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Nombre Completo del Cliente</th>
+                            <th>Membresía ID</th>
+                            <th>Monto Pagado</th>
+                            <th>Fecha de Pago</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var pago in pagos)
+                        {
+                            <tr>
+                                <td>@pago.ClienteNombreCompleto</td> <!-- Mostrando el nombre completo del cliente -->
+                                <td>@pago.MembresiaID</td>
+                                <td>@pago.MontoPagado.ToString("C")</td>
+                                <td>@pago.FechaPago.ToString("yyyy-MM-dd")</td>
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        <button class="btn btn-outline-warning btn-sm d-flex align-items-center" @onclick="() => OpenUpdatePaymentModal(pago)">
+                                            <i class="bi bi-pencil-square me-1"></i> Actualizar
+                                        </button>
+                                        <button class="btn btn-outline-danger btn-sm d-flex align-items-center" @onclick="() => DeletePayment(pago.PagoID)">
+                                            <i class="bi bi-trash me-1"></i> Eliminar
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+
+    <!-- Modal para agregar pagos -->
+    @if (showAddModal)
+    {
+        <div class="modal fade show d-block" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title">Agregar Pago</h5>
+                        <button type="button" class="btn-close" @onclick="CloseModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="clienteId" class="form-label">Cliente ID</label>
+                            <input type="text" id="clienteId" @bind="newPago.ClienteID" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="membresiaId" class="form-label">Membresía ID</label>
+                            <input type="text" id="membresiaId" @bind="newPago.MembresiaID" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="montoPagado" class="form-label">Monto Pagado</label>
+                            <input type="number" step="0.01" id="montoPagado" @bind="newPago.MontoPagado" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary d-flex align-items-center" @onclick="AddPayment">
+                            <i class="bi bi-save me-2"></i> Guardar
+                        </button>
+                        <button class="btn btn-secondary" @onclick="CloseModal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@code {
+    private List<Pago> pagos = new();
+    private Pago newPago = new();
+    private bool showAddModal = false;
+    private string? notificationMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!AuthService.IsEmpleado)
+        {
+            Navigation.NavigateTo("/acceso-denegado");
+        }
+        else
+        {
+            await LoadPagos();
+        }
+    }
+
+    private async Task LoadPagos()
+    {
+        pagos = await Http.GetFromJsonAsync<List<Pago>>("api/Pagos");
+    }
+
+    private void OpenAddPaymentModal()
+    {
+        newPago = new Pago();
+        showAddModal = true;
+    }
+
+    private void CloseModal()
+    {
+        showAddModal = false;
+    }
+
+    private async Task AddPayment()
+    {
+        var response = await Http.PostAsJsonAsync("api/Pagos", newPago);
+        if (response.IsSuccessStatusCode)
+        {
+            notificationMessage = "Pago agregado exitosamente.";
+            await LoadPagos();
+            CloseModal();
+        }
+        else
+        {
+            notificationMessage = "Error al agregar el pago.";
+        }
+    }
+
+    private void OpenUpdatePaymentModal(Pago pago)
+    {
+        // Lógica para abrir y gestionar la actualización de un pago
+    }
+
+    private async Task DeletePayment(Guid pagoID)
+    {
+        var response = await Http.DeleteAsync($"api/Pagos/{pagoID}");
+        if (response.IsSuccessStatusCode)
+        {
+            notificationMessage = "Pago eliminado exitosamente.";
+            await LoadPagos();
+        }
+        else
+        {
+            notificationMessage = "Error al eliminar el pago.";
+        }
+    }
+
+    public class Pago
+    {
+        public Guid PagoID { get; set; }
+        public Guid ClienteID { get; set; }
+        public Guid MembresiaID { get; set; }
+        public Guid? EmpleadoID { get; set; }
+        public decimal MontoPagado { get; set; }
+        public DateTime FechaPago { get; set; }
+        public string ClienteNombreCompleto { get; set; } // Nuevo campo para el nombre completo del cliente
+    }
+}

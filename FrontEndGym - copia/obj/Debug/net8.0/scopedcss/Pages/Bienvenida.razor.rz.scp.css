@@ -1,0 +1,258 @@
+.welcome-container[b-m9avh5ew23] {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.jumbotron[b-m9avh5ew23] {
+    padding: 1rem 1rem;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 12px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.display-5[b-m9avh5ew23] {
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.lead[b-m9avh5ew23] {
+    color: #d3d3d3;
+    font-size: 1.2rem;
+}
+
+.welcome-text[b-m9avh5ew23], .additional-info[b-m9avh5ew23] {
+    color: #b0b0b0;
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.additional-info[b-m9avh5ew23] {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #c0c0c0;
+}
+
+.custom-hover[b-m9avh5ew23] {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.custom-hover:hover[b-m9avh5ew23] {
+    background-color: #007bff;
+    transform: scale(1.05);
+}
+
+/* Beneficios (cards) */
+.benefits-container h2[b-m9avh5ew23] {
+    font-size: 2rem;
+    color: #0f0f106b;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    margin-bottom: 2rem;
+}
+
+.card[b-m9avh5ew23] {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card i.bi[b-m9avh5ew23] {
+    font-size: 3rem;
+    display: block;
+    color: inherit;
+    margin-top: 1rem;
+    transition: color 0.3s ease;
+}
+
+
+.card:hover[b-m9avh5ew23] {
+    transform: scale(1.03);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-title[b-m9avh5ew23] {
+    color: #333;
+    text-transform: uppercase;
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.card-text[b-m9avh5ew23] {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.btn-primary[b-m9avh5ew23] {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 8px;
+}
+
+.btn-secondary[b-m9avh5ew23] {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 8px;
+}
+
+h2[b-m9avh5ew23] {
+    margin-bottom: 1.5rem;
+    color: #212121;
+    text-transform: uppercase;
+    margin-top: 12px;
+    padding-top: 12px;
+}
+
+h2[b-m9avh5ew23], .card-title[b-m9avh5ew23] {
+    margin-top: 8px; /* Separación superior */
+    margin-bottom: 8px; /* Separación inferior */
+}
+
+h5[b-m9avh5ew23], .card-text[b-m9avh5ew23] {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+/* Estilos para los GIFs */
+.gif-container[b-m9avh5ew23] {
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.gif-container img[b-m9avh5ew23] {
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-height: 220px;
+}
+
+.gif-container img:hover[b-m9avh5ew23] {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.gif-title[b-m9avh5ew23] {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #444;
+    margin-top: 0.5rem;
+}
+
+.gif-description[b-m9avh5ew23] {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.4;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.text-muted[b-m9avh5ew23] {
+    color: #bbb !important;
+}
+
+
+/* Ajuste para el contenedor que contiene "Plan de Bienvenida", "Horarios Flexibles" y "Ambiente Saludable" */
+.container.mt-5[b-m9avh5ew23] {
+    margin-top: 2rem !important; /* Reduce el espacio superior */
+}
+
+.container .row .col-md-4.text-center[b-m9avh5ew23] {
+    padding-top: 1rem; /* Ajusta la separación interna en la parte superior */
+    margin-bottom: 5.5rem; /* Espacio inferior para mejor apariencia */
+}
+
+.container .row .col-md-4.text-center i[b-m9avh5ew23] {
+    margin-bottom: 0.5rem; /* Ajusta el icono más cerca del texto */
+}
+
+
+.card-body[b-m9avh5ew23] {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+/* Ajustes para las secciones generales */
+.benefits-container[b-m9avh5ew23] {
+    margin-bottom: 20px; /* Espacio debajo de esta sección */
+}
+
+.gif-container[b-m9avh5ew23] {
+    margin-bottom: 16px; /* Espacio entre cada GIF y el texto */
+}
+
+.container[b-m9avh5ew23] {
+    padding-top: 8px; /* Espacio superior entre contenedores */
+    padding-bottom: 24px;
+}
+
+/* Ajuste para "¿Por qué elegir GymFit?" */
+.container.mt-5[b-m9avh5ew23] {
+    margin-top: 1rem !important; /* Reduce aún más el espacio superior de esta sección */
+}
+
+/* Ajuste individual para los elementos dentro de "¿Por qué elegir GymFit?" */
+.container.mt-5 .row .col-md-4[b-m9avh5ew23] {
+    margin-top: -24px; /* Sube cada columna más */
+}
+
+/* Espacio inferior para la sección anterior (Nuestras Instalaciones) */
+.container.text-center.py-5[b-m9avh5ew23] {
+    margin-bottom: 2rem; /* Elimina el margen inferior para acercar las dos secciones */
+}
+
+/* Para evitar padding innecesario en cada tarjeta */
+.card-body[b-m9avh5ew23] {
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+}
+
+
+.facility-list[b-m9avh5ew23] {
+    padding-left: 1.5rem;
+    text-align: left;
+    color: #c0c0c0;
+    line-height: 1.6;
+}
+
+.card-detail[b-m9avh5ew23] {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 0.5rem;
+}
+
+
+
+.facility-card[b-m9avh5ew23] {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 10px;
+}
+
+.facility-card:hover[b-m9avh5ew23] {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.facility-card .card-title[b-m9avh5ew23] {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.facility-card .card-text[b-m9avh5ew23] {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+

@@ -1,0 +1,87 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = FrontEndGym
+build_property.RootNamespace = FrontEndGym
+build_property.ProjectDir = C:\Users\linki\Downloads\GymApi\FrontEndGym - copia\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\linki\Downloads\GymApi\FrontEndGym - copia
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/linki/Downloads/GymApi/FrontEndGym - copia/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/linki/Downloads/GymApi/FrontEndGym - copia/Pages/Cliente.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xpZW50ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/linki/Downloads/GymApi/FrontEndGym - copia/Pages/ConfirmacionCompra.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uZmlybWFjaW9uQ29tcHJhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/linki/Downloads/GymApi/FrontEndGym - copia/Pages/Denegado.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVuZWdhZG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/linki/Downloads/GymApi/FrontEndGym - copia/Pages/Empleado.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/linki/Downloads/GymApi/FrontEndGym - copia/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/linki/Downloads/GymApi/FrontEndGym - copia/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-lf66ruvsxy
+
+[C:/Users/linki/Downloads/GymApi/FrontEndGym - copia/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-heqh2b7r23
+
+[C:/Users/linki/Downloads/GymApi/FrontEndGym - copia/Pages/Bienvenida.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmllbnZlbmlkYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-m9avh5ew23
+
+[C:/Users/linki/Downloads/GymApi/FrontEndGym - copia/Pages/Clientes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xpZW50ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-uws5a1sy41
+
+[C:/Users/linki/Downloads/GymApi/FrontEndGym - copia/Pages/EntrenadoresC.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW50cmVuYWRvcmVzQy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-f4xtld3fkr
+
+[C:/Users/linki/Downloads/GymApi/FrontEndGym - copia/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-w2ddmdhday
+
+[C:/Users/linki/Downloads/GymApi/FrontEndGym - copia/Pages/Membresias.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVtYnJlc2lhcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-ljwtoqf0b2
+
+[C:/Users/linki/Downloads/GymApi/FrontEndGym - copia/Pages/Pagos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFnb3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-dlv78mpmc5
+
+[C:/Users/linki/Downloads/GymApi/FrontEndGym - copia/Pages/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-pqjc27ep1f
+
+[C:/Users/linki/Downloads/GymApi/FrontEndGym - copia/Pages/RegistrarE.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0cmFyRS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-4gfasref73

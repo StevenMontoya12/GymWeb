@@ -1,0 +1,379 @@
+.page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+
+a.nav-link{
+    color: white;
+}
+
+
+.nav-link {
+    display: block;
+    padding: .5rem 1rem;
+    color: #f1f3f5 !important;
+    text-decoration: none;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.nav-link:hover {
+    display: block;
+    padding: .5rem 1rem;
+    color: #e3e6e950 !important;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+
+.nav-link:visited {
+    display: block;
+    padding: .5rem 1rem;
+    color: #e3e6e9 !important;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+
+
+.sidebar {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 100%, #000000fd 10%);
+    color: white;
+    height: 100vh;
+    padding: 15px 10px;
+}
+
+.top-row {
+    background-color: rgba(0, 0, 0, 0.6);
+ 
+    justify-content: flex-end;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+}
+
+
+.top-row a, .top-row .btn-link {
+    white-space: nowrap;
+    margin-left: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.top-row a:hover, .top-row .btn-link:hover {
+    text-decoration: underline;
+    color: #ececec;
+}
+
+
+.sidebar .nav-link {
+    color: white !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+
+.nav-link {
+    color: white;
+    background-color: #0000006c;
+
+}
+
+
+
+.sidebar .nav-link:hover {
+    background-color: #343a40;
+    color: white !important;
+}
+
+.sidebar .nav-link.active {
+    color: #ccc !important;
+}
+
+/* Hover effect for the top-row buttons (login and register) */
+.custom-text-hover {
+    color: #343a40;
+    transition: color 0.3s ease;
+}
+
+.custom-text-hover:hover {
+    color: #f7f7fa;
+}
+
+/* Custom hover for nav links */
+.nav-link.custom-hover {
+    color: white !important;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-link.custom-hover:hover {
+    background-color: #6c757d; /* Gris oscuro */
+    color: white !important;
+}
+
+@media (max-width: 640.98px) {
+    .top-row {
+        justify-content: space-between;
+    }
+
+    .top-row a, .top-row .btn-link {
+        margin-left: 0;
+    }
+
+    .nav-link custom-hover{
+        color: white;
+        background-color: #f7f7fa;
+    
+    }
+}
+
+@media (min-width: 641px) {
+    .page {
+        flex-direction: row;
+    }
+
+    .sidebar {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .top-row, article {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+
+    .nav-link custom-hover{
+        color: white;
+        background-color: #f7f7fa;
+    
+    }
+}
+
+
+.sidebar {
+    background-image: linear-gradient(180deg, rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) 100%, #c2c2c6fd 10%);
+    color: white;
+    width: 0;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+.nav-scrollable.visible {
+    width: 10px; /* Ajusta el ancho deseado */
+}
+
+.main-content {
+    transition: margin-left 0.3s ease;
+    background-color: #343a40;
+    
+}
+
+
+
+@media (min-width: 641px) {
+    .sidebar {
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+}
+
+
+
+
+
+.nav-scrollable {
+    width: 0;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+.nav-scrollable.visible {
+    width: 250px; /* Ajusta el ancho aquí */
+    visibility: visible;
+}
+
+
+
+.nav-link.custom-hover {
+    color: white !important;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-link.custom-hover:hover {
+    background-color: #6c757d; /* Gris oscuro */
+    color: white !important;
+}
+
+
+
+/* Estilo general del encabezado y navegación */
+.container-fluid {
+    background-color: #f8f9fa; /* Fondo claro para el encabezado */
+   
+}
+
+.d-flex {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.GymFit {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.GymFit:hover {
+    transform: scale(1.15);
+  
+}
+
+/* Estilo para los botones de sesión y registro */
+.btn-toolbar .btn {
+    padding: 10px 20px; /* Asegura el mismo tamaño para ambos */
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 30px; /* Bordes redondeados uniformes */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-toolbar .btn:hover {
+    background-color: #45a049;
+}
+
+.btn-toolbar .btn-outline-secondary {
+    background-color: #ffffff;
+    color: #343a40;
+    border: 2px solid #343a40; /* Borde uniforme */
+}
+.btn-toolbar .btn-outline-secondary:hover {
+    background-color: #343a40;
+    color: #ffffff;
+    border-color: #343a40;
+}
+
+/* Estilo para el sidebar */
+.sidebar {
+    background-color: #e9ecef;
+    height: 100vh;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+/* Estilo para elementos del menú */
+.sidebar .nav-link {
+    color: #343a40;
+    font-weight: 500;
+    border-radius: 5px;
+    padding: 10px;
+ 
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+.sidebar .nav-link.active {
+    background-color: #0056b3;
+    color: #ffffff;
+}
+
+
+.color-change{
+    width: 100%;
+    background-color: #212121;
+    
+   
+}
+
+
+
+
+/* Ajustes para el contenido principal */
+.main-content {
+    padding-top: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.pagination-container .btn {
+    color: #343a40;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination-container .btn:hover {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+.footer {
+    width: 100%;
+    font-size: 0.9rem;
+    position: relative;
+}
+
+
+
+
+
+
+
+/* Estilo con !important para forzar la uniformidad */
+.btn-toolbar .btn.btn-outline-secondary,
+.btn-toolbar .btn-outline-secondary {
+    padding: 10px 20px !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    border-radius: 30px !important;
+    transition: background-color 0.3s ease, color 0.3s ease !important;
+    background-color: #ffffff !important;
+    color: #343a40 !important;
+    border: 2px solid #343a40 !important;
+}
+
+.btn-toolbar .btn.btn-outline-secondary:hover,
+.btn-toolbar .btn-outline-secondary:hover {
+    background-color: #343a40 !important;
+    color: #ffffff !important;
+    border-color: #343a40 !important;
+}

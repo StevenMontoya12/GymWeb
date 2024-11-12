@@ -1,0 +1,89 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\FrontEndGym - copia\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\FrontEndGym - copia\\obj\\Debug\\net8.0\\compressed\\69m5whlr5z.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\FrontEndGym - copia\\obj\\Debug\\net8.0\\scopedcss\\bundle\\FrontEndGym.styles.css",
+      "PackagePath": "staticwebassets\\FrontEndGym.styles.css"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\FrontEndGym - copia\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\FrontEndGym - copia\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\FrontEndGym - copia\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\FrontEndGym - copia\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\FrontEndGym - copia\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\FrontEndGym - copia\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\FrontEndGym - copia\\wwwroot\\images\\anime-hikikomori.gif",
+      "PackagePath": "staticwebassets\\images\\anime-hikikomori.gif"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\FrontEndGym - copia\\wwwroot\\images\\cartoon-sword.gif",
+      "PackagePath": "staticwebassets\\images\\cartoon-sword.gif"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\FrontEndGym - copia\\wwwroot\\images\\god.gif",
+      "PackagePath": "staticwebassets\\images\\god.gif"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\FrontEndGym - copia\\wwwroot\\images\\goku-super-saiyan-god-charge-up3-goku.gif",
+      "PackagePath": "staticwebassets\\images\\goku-super-saiyan-god-charge-up3-goku.gif"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\FrontEndGym - copia\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\FrontEndGym - copia\\wwwroot\\js\\script.js",
+      "PackagePath": "staticwebassets\\js\\script.js"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\FrontEndGym - copia\\wwwroot\\js\\sidebar.js",
+      "PackagePath": "staticwebassets\\js\\sidebar.js"
+    },
+    {
+      "Id": "C:\\Users\\linki\\Downloads\\GymApi\\FrontEndGym - copia\\wwwroot\\sample-data\\weather.json",
+      "PackagePath": "staticwebassets\\sample-data\\weather.json"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FrontEndGym.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.FrontEndGym.props",
+      "PackagePath": "build\\FrontEndGym.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.FrontEndGym.props",
+      "PackagePath": "buildMultiTargeting\\FrontEndGym.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.FrontEndGym.props",
+      "PackagePath": "buildTransitive\\FrontEndGym.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

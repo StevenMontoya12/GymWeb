@@ -1,0 +1,21 @@
+@page "/cliente"
+@inject AuthService AuthService
+@using BlazorFrontend.Services
+@inject NavigationManager Navigation
+
+<h3>Bienvenido Cliente</h3>
+<p>Esta es la vista del cliente.</p>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        // Asegúrate de que el estado de autenticación esté inicializado
+        await AuthService.InitializeAuthStateAsync();
+
+        // Verifica el rol y redirige si el usuario no es "Cliente"
+        if (!AuthService.IsCliente)
+        {
+            Navigation.NavigateTo("/acceso-denegado");
+        }
+    }
+}

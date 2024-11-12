@@ -1,0 +1,25 @@
+.navlink {
+    display: block;
+    padding: .5rem 1rem;
+    color: #e3e6e9 !important;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+
+.navlink:hover {
+    display: block;
+    padding: .5rem 1rem;
+    color: #e3e6e950 !important;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+
+.navlink:visited {
+    display: block;
+    padding: .5rem 1rem;
+    color: #e3e6e9 !important;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
